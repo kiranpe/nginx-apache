@@ -1,6 +1,10 @@
 pipeline{
-    agent any
+    environment {
+        fs = "/"
+    }
     
+    agent any
+     
     stages {
        stage ('Build the docker') {
                    steps ('commad') {
@@ -25,7 +29,7 @@ pipeline{
       stage ('Build Skip') {
                    when {
                     expression {
-                        CNT_ID == sh(script:"docker inspect --format={{.Name}} 27c | awk -F"/" '{print $2}'").trim()
+                        CNT_ID == sh(script:"docker inspect --format={{.Name}} 27c | awk -F"$fs" '{print $2}'").trim()
                         return (CNT_ID == nginx-apache)
                     }
                   }
