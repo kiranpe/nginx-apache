@@ -21,6 +21,17 @@ pipeline{
                    steps ('command') {
                         sh "docker run --name nginx-apache -p 8090:80 -d -it nginx-apache"
                    }
-       }
+      }
+      stage ('Build Skip') {
+                   when {
+                    expression {
+                        CNT_ID == sh(docker inspect --format={{.Name}} 27c | sed 's/\///g').trim()
+                        return (CNT_ID == nginx-apache)
+                    }
+                  }
+                  steps {
+                     echo 'Skipping the build'
+                  }
+     }
    } 
 }
