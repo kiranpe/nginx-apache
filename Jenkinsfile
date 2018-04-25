@@ -12,5 +12,5 @@ pipeline{
                         sh "docker run --name nginx-apache -p 8090:80 -d -it nginx-apache"
                    }
        }
-   }
+   } 
 }
