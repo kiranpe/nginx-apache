@@ -29,7 +29,7 @@ pipeline{
       stage ('Build Skip') {
                    when {
                     expression {
-                        CNT_ID == sh(script:"docker inspect --format={{.Name}} 27c | awk -F"$fs" '{print $2}'").trim()
+                        CNT_ID == sh(script:"docker inspect --format={{.Name}} 27c | awk -F"${fs}" '{print $2}'").trim()
                         return (CNT_ID == nginx-apache)
                     }
                   }
