@@ -1,14 +1,6 @@
 pipeline{
     agent any
-    def deploToProduction = true
-    try{
-       input 'Deploy to Production'
-    }catch(e){
-       deployToProduction = false
-     }
-    if(deployToProduction){
-       println "Deploying to production"
-    } 
+    
     stages {
        stage ('Build the docker') {
                    steps ('commad') {
