@@ -1,7 +1,7 @@
 pipeline{
     environment {
        /* CNT_ID == sh(script:'docker inspect --format={{.Name}} 27c | sed "s/\\///g"') */
-          CNTID = "nginx-apache"
+          CNTID = "nginx_apache"
     }
     
     agent any
@@ -30,7 +30,7 @@ pipeline{
       stage ('Build Skip') {
                    when {
                     expression {
-                        return env.CNTID == nginx-apache
+                        return env.CNTID == nginx_apache
                     }
                   }
                   steps {
