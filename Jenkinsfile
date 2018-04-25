@@ -7,6 +7,16 @@ pipeline{
                         sh "docker build -t nginx-apache ."
                    }
        }
+       stage ('Stop the running container') {
+                   steps ('command') {
+                        sh "docker stop nginx-apache"
+                   }
+       }
+       stage ('remove old containe') {
+                   steps ('command') {
+                        sh "docker rm nginx-apache"
+                   }
+       }
        stage ('Run the image') {
                    steps ('command') {
                         sh "docker run --name nginx-apache -p 8090:80 -d -it nginx-apache"
