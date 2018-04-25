@@ -1,11 +1,14 @@
 pipeline{
-    environment {
-        /* CNTID = "sh(script:'docker inspect --format={{.Name}} 27c | sed "s/\///g"')" */
-         CNTID = "nginx_apache" 
-    }
-    
     agent any
-     
+    def deploToProduction = true
+    try{
+       input 'Deploy to Production'
+    }catch(e){
+       deployToProduction = false
+     }
+    if(deployToProduction){
+       println "Deploying to production"
+    } 
     stages {
        stage ('Build the docker') {
                    steps ('commad') {
