@@ -1,6 +1,6 @@
 pipeline{
     environment {
-        CNTID = "sh(script:'docker inspect --format={{.Name}} 27c | sed "s/\\///g"')"
+        CNTID = "sh(script:'docker inspect --format={{.Name}} 27c | sed "s/\///g"')"
         /*  CNTID = "nginx_apache" */
     }
     
