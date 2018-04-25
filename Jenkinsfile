@@ -30,7 +30,7 @@ pipeline{
       stage ('Build Skip') {
                    when {
                     expression {
-                        return env.CNTID == 'nginx_apache'
+                        return env.CNTID != 'nginx_apache'
                     }
                   }
                   steps {
