@@ -25,7 +25,7 @@ pipeline{
       stage ('Build Skip') {
                    when {
                     expression {
-                        CNT_ID == sh(docker inspect --format={{.Name}} 27c | sed 's/\///g').trim()
+                        CNT_ID == sh(script:'docker inspect --format={{.Name}} 27c | sed 's/\///g'').trim()
                         return (CNT_ID == nginx-apache)
                     }
                   }
