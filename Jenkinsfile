@@ -1,7 +1,7 @@
 pipeline{
     environment {
-       /* CNT_ID == sh(script:'docker inspect --format={{.Name}} 27c | sed "s/\\///g"') */
-          CNTID = "nginx_apache"
+        CNTID = "sh(script:'docker inspect --format={{.Name}} 27c | sed "s/\\///g"')"
+        /*  CNTID = "nginx_apache" */
     }
     
     agent any
